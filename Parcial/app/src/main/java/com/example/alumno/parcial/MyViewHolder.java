@@ -32,6 +32,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnCli
         precio=(TextView)itemView.findViewById(R.id.precio);
         sumar=(ImageView)itemView.findViewById(R.id.sumar);
         restar=(ImageView)itemView.findViewById(R.id.restar);
+        sumar.setOnClickListener(this);
+        restar.setOnClickListener(this);
         this.listener=listener;
 
         itemView.setOnClickListener(this);
@@ -48,7 +50,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnCli
     @Override
     public void onClick(View v)
     {
-        this.listener.OnClickListener(position);
+        this.listener.OnClickListener(position,v);
        // this.listener.
 
     }

@@ -1,5 +1,7 @@
 package com.example.alumno.parcial;
 
+import android.view.View;
+
 /**
  * Created by alumno on 09/05/2019.
  */
@@ -7,7 +9,7 @@ package com.example.alumno.parcial;
 public interface MyOnItemListener
 {
 
-    public void OnClickListener(int position);
+    public void OnClickListener(int position,View v);
 
 
 

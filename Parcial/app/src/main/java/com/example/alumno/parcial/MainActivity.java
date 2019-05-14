@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -85,8 +86,30 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     }
 
     @Override
-    public void OnClickListener(int position)
+    public void OnClickListener(int position,View v)
     {
+            int i;
+        if(v.getId()==R.id.sumar)
+        {
+            Log.d("ENTRE","G");
+            i=Integer.valueOf(this.productos.get(position).getCantidad());
+            i=i+1;
+
+            this.productos.get(position).setCantidad(String.valueOf(i));
+            adapter.notifyItemChanged(position);
+        }
+
+        if(v.getId()==R.id.restar)
+        {
+            i=Integer.valueOf(this.productos.get(position).getCantidad());
+            i=i-1;
+            if(i>=0)
+            {
+                this.productos.get(position).setCantidad(String.valueOf(i));
+            }
+
+            adapter.notifyItemChanged(position);
+        }
 
       //  Log.d("Click","click");
         Log.d("click",this.productos.get(position).getNombre());

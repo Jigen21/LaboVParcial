@@ -43,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>
         holder.precio.setText("Precio :" +p.getPrecio());
 
 
+
         holder.setPosition(position);
 
 
