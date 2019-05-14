@@ -70,6 +70,7 @@ public class XmlParser
                     {
                         //cantidad=parser.nextText();
                         p.setCantidad(parser.nextText());
+                        productos.add(p);
 
 
                     }
@@ -92,7 +93,7 @@ public class XmlParser
 
            // productos.add(p);
             event=parser.next();
-            productos.add(p);
+           // productos.add(p);
 
 
 

@@ -53,4 +53,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>
     {
         return this.productos.size();
     }
+
+    public void setProductos(List<Productos> productos)
+    {
+        this.productos = productos;
+    }
+
 }

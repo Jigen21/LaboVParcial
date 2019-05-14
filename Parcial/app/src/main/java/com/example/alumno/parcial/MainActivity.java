@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     List<Productos> productos = new ArrayList<Productos>();
 
     MyOnItemListener listener;
+    MyAdapter adapter;
 
 
 
@@ -28,10 +29,21 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         setContentView(R.layout.activity_main);
 
 
+        RecyclerView rv = (RecyclerView)findViewById(R.id.lista);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        adapter = new MyAdapter(this.productos,this );
+        rv.setLayoutManager(linearLayoutManager);
+        rv.setAdapter(adapter);
+       // adapter.notifyDataSetChanged();
+
+
+
+
 
 
         Handler h= new Handler(this);
-        MyThread mt = new MyThread("http://192.168.2.166:8080/productos.xml",h);
+        //MyThread mt = new MyThread("http://192.168.2.166:8080/productos.xml",h);
+        MyThread mt = new MyThread("http://192.168.0.20/Labov/productos.xml",h);
         mt.start();
 
        /* Productos p = new Productos("2","ads","ads","dsa");
@@ -58,11 +70,14 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
         Log.d("LLEGUE","ASd");
 
-        RecyclerView rv = (RecyclerView)findViewById(R.id.lista);
+        /*RecyclerView rv = (RecyclerView)findViewById(R.id.lista);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         MyAdapter adapter = new MyAdapter((List<Productos>)msg.obj,this );
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();*/
+        this.productos=(List<Productos>)msg.obj;
+        adapter.setProductos((List<Productos>)msg.obj);
         adapter.notifyDataSetChanged();
 
 
@@ -73,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     public void OnClickListener(int position)
     {
 
-        Log.d("Click","click");
+      //  Log.d("Click","click");
+        Log.d("click",this.productos.get(position).getNombre());
 
     }
 }

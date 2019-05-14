@@ -34,8 +34,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnCli
         restar=(ImageView)itemView.findViewById(R.id.restar);
         this.listener=listener;
 
-       // itemView.setOnClickListener(this);
-        listener.OnClickListener(position);
+        itemView.setOnClickListener(this);
+       // listener.OnClickListener(position);
 
     }
 
