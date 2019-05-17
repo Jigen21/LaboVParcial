@@ -26,7 +26,7 @@ public class XmlParser
         String precio="";
         String cantidad="";
         String id="";
-        Productos p=new Productos("","","","");
+        Productos p=null;
 
 
         parser.setInput(new StringReader(s));
@@ -41,66 +41,64 @@ public class XmlParser
 
                     if("producto".equals(parser.getName()))
                     {
-                        p = new Productos(nombre,precio,cantidad,id);
+                        p = new Productos();
 
                     }
 
                     if("id".equals(parser.getName()))
                     {
-                        //id=parser.nextText();
-                        p.setId(parser.nextText());
-
+                        if(p!=null)
+                        {
+                            p.setId(parser.nextText());
+                        }
 
                     }
                     if("nombre".equals(parser.getName()))
                     {
-                       // nombre=parser.nextText();
-                        p.setNombre(parser.nextText());
+                        if(p!=null)
+                        {
+                            p.setNombre(parser.nextText());
+                        }
 
 
                     }
                     if("precio".equals(parser.getName()))
                     {
-                      //  precio=parser.nextText();
-                        p.setPrecio(parser.nextText());
+                        if(p!=null)
+                        {
+                            p.setPrecio(parser.nextText());
+                        }
 
 
                     }
                     if("cantidad".equals(parser.getName()))
                     {
-                        //cantidad=parser.nextText();
-                        p.setCantidad(parser.nextText());
-                        productos.add(p);
-
+                        if(p!=null)
+                        {
+                            p.setCantidad(parser.nextText());
+                        }
 
                     }
 
+                    break;
 
-                    //event=parser.next();
+                case XmlPullParser.END_TAG:
 
+                    if("producto".equals(parser.getName()))
+                    {
+                        productos.add(p);
 
-                    // Productos p = new Productos(id,nombre,precio,cantidad);
+                    }
 
-                     //productos.add(p);
-
-
-
-                    //productos.add(p);
+                    break;
 
             }
 
-          //  Productos p = new Productos(id,nombre,precio,cantidad);
 
-           // productos.add(p);
             event=parser.next();
-           // productos.add(p);
-
-
-
 
 
         }
-
 
         return productos;
 

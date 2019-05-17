@@ -10,6 +10,9 @@ public class Productos
     private String precio;
     private String cantidad;
 
+    public Productos() {
+    }
+
     public Productos(String id, String nombre, String precio, String cantidad) {
         this.id = id;
         this.nombre = nombre;

@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
 
         Handler h= new Handler(this);
-        //MyThread mt = new MyThread("http://192.168.2.166:8080/productos.xml",h);
-        MyThread mt = new MyThread("http://192.168.0.20/Labov/productos.xml",h);
+        MyThread mt = new MyThread("http://192.168.2.167:8080/a/productos.xml",h);
+        //MyThread mt = new MyThread("http://192.168.0.20/Labov/productos.xml",h);
         mt.start();
 
        /* Productos p = new Productos("2","ads","ads","dsa");
@@ -77,7 +77,10 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(adapter);
         adapter.notifyDataSetChanged();*/
+
+
         this.productos=(List<Productos>)msg.obj;
+
         adapter.setProductos((List<Productos>)msg.obj);
         adapter.notifyDataSetChanged();
 
@@ -93,10 +96,17 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         {
             Log.d("ENTRE","G");
             i=Integer.valueOf(this.productos.get(position).getCantidad());
+           // i=Integer.valueOf(adapter.getProductos().get(position).getCantidad());
             i=i+1;
 
-            this.productos.get(position).setCantidad(String.valueOf(i));
+           this.productos.get(position).setCantidad(String.valueOf(i));
+            //this.adapter.getProductos().get(position).setCantidad(String.valueOf(i));
             adapter.notifyItemChanged(position);
+
+            //this.productos.add(new Productos("asd","fds","gfdg","sdasad"));
+            //adapter.notifyDataSetChanged();
+
+
         }
 
         if(v.getId()==R.id.restar)
@@ -105,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
             i=i-1;
             if(i>=0)
             {
+
                 this.productos.get(position).setCantidad(String.valueOf(i));
             }
 

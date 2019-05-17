@@ -60,4 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>
         this.productos = productos;
     }
 
+    public List<Productos> getProductos() {
+        return productos;
+    }
 }
