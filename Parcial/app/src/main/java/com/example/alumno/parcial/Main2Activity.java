@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +32,50 @@ public class Main2Activity extends AppCompatActivity implements Handler.Callback
             @Override
             public void onClick(View v) {
 
+                int flag = 0;
                 final String user = mail.getText().toString();
                 final String pass = clave.getText().toString();
+
+                if((user.equals("") || pass.equals("")))
+                {
+                    flag++;
+                    if(flag==1)
+                    {
+                        Toast.makeText(getBaseContext(), "Complete todos los campos",
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                }
+
+
+                if(user.equals("admin") && pass.equals("1234"))
+                {
+                    flag++;
+                    if(flag==1)
+                    {
+                        Toast.makeText(getBaseContext(), "Bienvenido/a admin" ,
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+                if(user.equals("usuario") && pass.equals("1234"))
+                {
+                    flag++;
+                    if(flag==1)
+                    {
+                        Toast.makeText(getBaseContext(), "Bienvenido/a usuario/a" ,
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+
+
 
                 Log.d("Usuario",user);
                 Log.d("password",pass);
@@ -69,6 +112,7 @@ public class Main2Activity extends AppCompatActivity implements Handler.Callback
                 Intent i = new Intent(this,MainActivity.class);
                 i.putExtra("valor","admin");
                 startActivity(i);
+                finish();
             }
 
             if(id.equals("User"))
@@ -77,6 +121,7 @@ public class Main2Activity extends AppCompatActivity implements Handler.Callback
                 Intent i = new Intent(this,MainActivity.class);
                 i.putExtra("valor","user");
                 startActivity(i);
+                finish();
             }
 
             if(id.equals("error"))

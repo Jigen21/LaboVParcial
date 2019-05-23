@@ -34,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Mail"
-            android:ems="10"
+            android:hint="Mail"
+            android:ems="1"
             android:id="@+id/recu1"
             android:layout_weight="1" />
 
@@ -58,11 +58,11 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Clave"
-            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Clave"
             android:id="@+id/recu2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            />
 
 
 
