@@ -17,33 +17,67 @@
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/imageView2"
-        android:layout_weight="6.09" />
+        android:layout_weight="6.09"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="Mail"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Mail"
+            android:ems="10"
+            android:id="@+id/recu1"
+            android:layout_weight="1" />
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/recu1"
-        android:layout_weight="1" />
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/recu2"
-        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="Clave"/>
+
+
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Clave"
+            android:ems="10"
+            android:id="@+id/recu2"
+            android:layout_weight="1" />
+
+
+
+    </LinearLayout>
+
+
+
 
     <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="Ingresar"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:id="@+id/recuboton"
-        android:layout_weight="6.09" />
+        android:layout_weight="1"
+        android:layout_gravity="center"/>
 
 
 </LinearLayout>
