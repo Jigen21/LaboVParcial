@@ -1,5 +1,6 @@
 package com.example.alumno.parcial;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     MyOnItemListener listener;
     MyAdapter adapter;
 
+    Intent devuelto = getIntent();
+
 
 
 
@@ -28,6 +31,10 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+       // Intent devuelto = getIntent();
+       // String resultado = devuelto.getStringExtra("valor");
+       // Log.d("valor",resultado);
 
 
         RecyclerView rv = (RecyclerView)findViewById(R.id.lista);
@@ -43,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
 
         Handler h= new Handler(this);
-        MyThread mt = new MyThread("http://192.168.2.167:8080/a/productos.xml",h);
+        MyThread mt = new MyThread("http://192.168.2.180:8080/productos.xml",h);
         //MyThread mt = new MyThread("http://192.168.0.20/Labov/productos.xml",h);
         mt.start();
 
@@ -91,7 +98,55 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     @Override
     public void OnClickListener(int position,View v)
     {
+
+
+        Intent devuelto = getIntent();
+        String resultado = devuelto.getStringExtra("valor");
+        Log.d("valor",resultado);
+        if(resultado.equals("admin"))
+        {
+
             int i;
+            if(v.getId()==R.id.sumar)
+            {
+                Log.d("ENTRE","G");
+                i=Integer.valueOf(this.productos.get(position).getCantidad());
+                // i=Integer.valueOf(adapter.getProductos().get(position).getCantidad());
+                i=i+1;
+
+                this.productos.get(position).setCantidad(String.valueOf(i));
+                //this.adapter.getProductos().get(position).setCantidad(String.valueOf(i));
+                adapter.notifyItemChanged(position);
+
+                //this.productos.add(new Productos("asd","fds","gfdg","sdasad"));
+                //adapter.notifyDataSetChanged();
+
+
+            }
+
+            if(v.getId()==R.id.restar)
+            {
+                i=Integer.valueOf(this.productos.get(position).getCantidad());
+                i=i-1;
+                if(i>=0)
+                {
+
+                    this.productos.get(position).setCantidad(String.valueOf(i));
+                }
+
+                adapter.notifyItemChanged(position);
+            }
+
+            //  Log.d("Click","click");
+            Log.d("click",this.productos.get(position).getNombre());
+
+
+
+        }
+
+
+
+     /*       int i;
         if(v.getId()==R.id.sumar)
         {
             Log.d("ENTRE","G");
@@ -124,6 +179,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
       //  Log.d("Click","click");
         Log.d("click",this.productos.get(position).getNombre());
-
+*/
     }
 }
